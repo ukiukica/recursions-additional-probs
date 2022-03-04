@@ -9,9 +9,21 @@
     console.log(sort([14, 5, 10, 6, 3, 4, 21, 16, 9])); // prints [ 3, 4, 5, 6, 9, 10, 14, 16, 21 ]
 */
 
-function sort(nums) {
-    
+function sort(nums, sorted = []) {
+    let newArr = [];
+    if (!nums.length) return [];
+    let minVal = Math.min(...nums);
+    let minIndex = nums.indexOf(minVal);
+    let minNum = nums.splice(minIndex, 1);
+    newArr.push(...minNum, ...sort(nums))
+    return newArr;
 }
+
+console.log(sort([])) // prints []
+console.log(sort([9])) // prints [9]
+console.log(sort([5, 4, 3, 2, 1])) // prints [1, 2, 3, 4, 5]
+console.log(sort([14, 5, 10, 6, 3, 4, 21, 16, 9])); // prints [ 3, 4, 5, 6, 9, 10, 14, 16, 21 ]
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
