@@ -17,8 +17,33 @@
 */
 
 function dynamicSlice(start, end) {
-    
+
+    let sliced = arr => {
+        let slicedArr = [];
+        let startIdx;
+        let endIdx;
+        if (start < 0 ) startIdx = 0;
+        else startIdx = start;
+        if (end > arr.length - 1) endIdx = arr.length - 1;
+        else endIdx = end;
+        for (let i = startIdx; i <= endIdx; i++) {
+            slicedArr.push(arr[i]);
+        };
+        return slicedArr;
+    };
+
+
+    return sliced;
 }
+
+
+
+const slicer = dynamicSlice(2,4);
+console.log(slicer([0, 1, 2, 3])); // prints [ 2, 3 ]
+console.log(slicer([2, 4, 'hello', false])); // prints ['hello', false]
+
+const slicer2 = dynamicSlice(-2, 10);
+console.log(slicer2([0,1,2,3])); // prints [0, 1, 2, 3]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
